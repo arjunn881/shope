@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import userRouter from "./routes/user.js";
+import authRouter from "./routes/auth.js";
 
 dotenv.config();
 
@@ -17,11 +18,14 @@ mongoose
     console.log(error);
   });
 
-app.get("/api/test", (req, res) => {
+app.get("/api", (req, res) => {
   res.status(200).json("Ecommerce API !!!");
 });
 
 app.use("/api/user", userRouter);
+app.use("/api/auth", authRouter);
+
+
 app.listen(process.env.PORT || 1000, () => {
   console.log("Backend server is running.......");
 });
