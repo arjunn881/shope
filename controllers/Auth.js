@@ -1,6 +1,6 @@
 import User from "../models/user.js";
 import CryptoJS from "crypto-js";
-import Jwt from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 
 export const register = async (req, res) => {
   const newUser = new User({
@@ -34,7 +34,7 @@ export const login = async (req, res) => {
       res.status(401).json("Wrong credentials!!!");
     const { password, ...others } = user._doc;
 
-    const acessToken = Jwt.sign(
+    const acessToken = jwt.sign(
       {
         id: user._id,
         isAdmin: user.isAdmin,
@@ -43,8 +43,8 @@ export const login = async (req, res) => {
       { expiresIn: "1d" }
     );
 
-    others && res.status(200).json({...others, acessToken});
-    res.status(200).json(savedUser);
+    res.status(200).json({...others, acessToken});
+
   } catch (error) {
     res.status(500).json(error);
   }
