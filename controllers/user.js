@@ -18,3 +18,9 @@ export const update = async(req,res)=>{
         res.status(500).json(error);
     }
 };
+
+
+
+export const deleteUser = async(req,res)=>{
+
+}
