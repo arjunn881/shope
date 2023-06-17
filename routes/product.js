@@ -1,7 +1,15 @@
 import express from "express";
+import { verifyTokenAndAdmin } from "./verifyToken.js";
+import { AddProduct } from "../controllers/product.js";
 
-const router = express.Router();
+const productRouter = express.Router();
 
-router.get('/user',);
+productRouter.get('/all', (req,res)=>{
+    console.log("product API....");
+    res.status(200).jsonp("Product Api...........s")
 
-export default router;
+})
+
+productRouter.post('/', verifyTokenAndAdmin, AddProduct);
+
+export default productRouter;

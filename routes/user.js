@@ -1,6 +1,6 @@
 import express from "express";
 import  { verifyTokenAndAdmin, verifyTokenAndAuthorization } from "./verifyToken.js";
-import { deleteUser, getUser, getUserStats, update } from "../controllers/user.js";
+import { deleteUser, getAllUser, getUser, getUserStats, update } from "../controllers/user.js";
 
 const router = express.Router();
 
@@ -10,7 +10,7 @@ router.delete('/:id', verifyTokenAndAuthorization , deleteUser );
 
 router.get('/find/:id', verifyTokenAndAdmin , getUser );
 
-router.get('/', verifyTokenAndAdmin , getUser );
+router.get('/', verifyTokenAndAdmin , getAllUser );
 
 router.get('/stats', verifyTokenAndAdmin , getUserStats );
 
