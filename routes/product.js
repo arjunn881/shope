@@ -1,6 +1,6 @@
 import express from "express";
 import { verifyTokenAndAdmin } from "./verifyToken.js";
-import { AddProduct } from "../controllers/product.js";
+import { AddProduct, deleteProduct, getAllProduct, updateProduct } from "../controllers/product.js";
 
 const productRouter = express.Router();
 
@@ -11,5 +11,9 @@ productRouter.get('/all', (req,res)=>{
 })
 
 productRouter.post('/', verifyTokenAndAdmin, AddProduct);
+productRouter.get('/', verifyTokenAndAdmin, updateProduct)
+productRouter.get('/',verifyTokenAndAdmin, deleteProduct);
 
+
+productRouter.get('/',getAllProduct)
 export default productRouter;
