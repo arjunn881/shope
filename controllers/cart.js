@@ -27,20 +27,20 @@ export const updateCart = async (req, res) => {
   }
 };
 
-export const deleteProduct = async (req, res) => {
+export const deleteCart = async (req, res) => {
   try {
-    await Product.findByIdAndDelete(req.params.id);
-    res.status(200).json("Product has been deleted!!!");
+    await Cart.findByIdAndDelete(req.params.id);
+    res.status(200).json("Cart has been deleted!!!");
   } catch (error) {
     res.status(500).json(error);
   }
 };
 
-export const getProduct = async (req, res) => {
+export const getCart = async (req, res) => {
   try {
-    const product = await Product.findById(req.params.id);
+    const Cart = await Cart.findById(req.params.id);
 
-    res.status(200).json(product);
+    res.status(200).json(Cart);
   } catch (error) {
     res.status(500).json(error);
   }
