@@ -36,7 +36,7 @@ export const deleteCart = async (req, res) => {
   }
 };
 
-export const getCart = async (req, res) => {
+export const getUserCart = async (req, res) => {
   try {
     const cart = await Cart.findOne({userId : req.params.userId});
 
@@ -46,28 +46,13 @@ export const getCart = async (req, res) => {
   }
 };
 
-export const getAll = async (req, res) => {
-  const qNew = req.query.new;
+export const getAll = async(req,res) =>{
 
-  const qcategory = req.query.category;
+    try {
+        const carts = await Cart.find();
 
-  try {
-    let products;
-
-    if (qNew) {
-      products = await Product.find().sort({ createdAt: -1 }).limit(5);
-    } else if (qcategory) {
-      products = await Product.find({
-        categories: {
-          $in: [qcategory],
-        },
-      });
-    } else {
-      products = await Product.find();
+        res.status(200).json(carts)
+    } catch (error) {
+        res.status(500).json(error);
     }
-
-    res.status(200).json(products);
-  } catch (error) {
-    res.status(500).json(error);
-  }
-};
+}
