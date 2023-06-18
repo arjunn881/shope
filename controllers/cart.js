@@ -46,7 +46,7 @@ export const getCart = async (req, res) => {
   }
 };
 
-export const getAllProduct = async (req, res) => {
+export const getAll = async (req, res) => {
   const qNew = req.query.new;
 
   const qcategory = req.query.category;
