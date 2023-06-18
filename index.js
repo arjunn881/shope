@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import userRouter from "./routes/user.js";
 import authRouter from "./routes/auth.js";
 import productRouter from "./routes/product.js";
+import cartRouter from "./routes/cart.js";
 
 
 dotenv.config();
@@ -27,7 +28,7 @@ app.get("/api", (req, res) => {
 app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/products", productRouter)
-
+app.use('/api/cart', cartRouter)
 
 app.listen(process.env.PORT || 1000, () => {
   console.log("Backend server is running.......");
