@@ -21,7 +21,7 @@ const OrderSchema = new mongoose.Schema(
 
     amout: {
       type: Number,
-      required: trusted,
+      required: true,
     },
     address: {
       type: Object,
